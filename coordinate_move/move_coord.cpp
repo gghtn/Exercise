@@ -17,7 +17,7 @@ int getKey, x, y;
 void ScreenInit();
 void ScreenFlipping();
 void ScreenClear();
-void ScreenPrint(int x, int y, char* string);
+void ScreenPrint(int x, int y, char string);
 void Render();
 
 int main()
@@ -30,7 +30,7 @@ int main()
             if (getch() == ENTER_KEY) {
                 system("cls");
                 printf("프로그램 종료");
-                return 0;
+                break;
             }
             Render();
         }

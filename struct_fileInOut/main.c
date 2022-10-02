@@ -22,7 +22,6 @@ typedef int BOOL;
 
 int main() {
 	FILE* in, * out;
-
 	int live_character = 100, death_character, revive, avoid, total_death = 0, turn = 0;
 
 	//죽은 캐릭터를 기록할 배열
