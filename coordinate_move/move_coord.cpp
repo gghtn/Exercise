@@ -19,6 +19,7 @@ void ScreenFlipping();
 void ScreenClear();
 void ScreenPrint(int x, int y, char string);
 void Render();
+void ScreenRelease();
 
 int main()
 {
@@ -28,6 +29,7 @@ int main()
     while (1) {
         if (_kbhit) {
             if (getch() == ENTER_KEY) {
+                ScreenRelease();
                 system("cls");
                 printf("프로그램 종료");
                 break;
@@ -114,4 +116,11 @@ void Render()
     ScreenPrint(x, y, '@');
     //버퍼교체
     ScreenFlipping();
+}
+
+//버퍼를 해제
+void ScreenRelease()
+{
+    CloseHandle(g_hScreen[0]);
+    CloseHandle(g_hScreen[1]);
 }
