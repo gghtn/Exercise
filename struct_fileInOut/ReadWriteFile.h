@@ -11,6 +11,6 @@ typedef struct
 	int	nLife;    // »ý¸í
 } CHARACTER;
 
-void __write(CHARACTER* hero, const int* death);
+void __write(CHARACTER* hero, int* death);
 
-void __read(CHARACTER* hero, const int* death, FILE* in);
+void __read(CHARACTER* hero, int* death, FILE* in);
