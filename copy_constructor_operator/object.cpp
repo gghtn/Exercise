@@ -72,11 +72,12 @@ CObject::~CObject() {
 //m_nNum의 자릿수와 char* 변형 리턴
 pair<int, char*> CObject::strNum() {
 	string str = to_string(m_nNum);
-	char* tmp = new char[str.size() + 1];
-	for (unsigned int i = 0; i < str.size(); i++) {
+	int len = str.size();
+	char* tmp = new char[len + 1];
+	for (unsigned int i = 0; i < len; i++) {
 		*(tmp + i) = str[i];
 	}
-	*(tmp + str.size()) = '\0';
+	*(tmp + len) = '\0';
 
 	pair<int, char*> result;
 	result.first = str.size();
@@ -97,16 +98,19 @@ int CObject::getNumLength() {
 	int num = m_nNum;
 	while (num / 10) {
 		result++;
-		num = num / 10;
+		num /= 10;
 	}
 	return result;
 }
 char* CObject::getNumStr() {
-	char* result = new char[getNumLength() + 1];
-	for (int i = getNumLength() - 1; i >= 0; i--) {
-		result[i] = m_nNum % 10 + '0';
+	int nLen = getNumLength();
+	int num = m_nNum;
+	char* result = new char[nLen + 1];
+	for (int i = nLen - 1; i >= 0; i--) {
+		result[i] = num % 10 + '0';
+		num /= 10;
 	}
-	result[getNumLength()] = '\0';
+	result[nLen] = '\0';
 
 	return result;
 }
